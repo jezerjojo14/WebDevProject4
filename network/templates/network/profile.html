@@ -1,0 +1,17 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+<div class="head-content" id="{{profile_user.username}}">
+  <br><br><br>
+  <h3>{{profile_user.username}}</h3>
+  <p>Follows {{following}} accounts
+  <br>
+  <span id="followers-{{profile_user.username}}">{{followers}}</span> accounts following {{profile_user.username}}</p>
+  {% if user.is_authenticated and user != profile_user %}
+  <a class="btn btn-outline-primary" href="#" onclick="toggle_follow(this); return false;">{% if profile_user in user.following.all %}Unf{% else %}F{% endif %}ollow</a>
+  {% endif %}
+  <br><br>
+  <h4>Posts:</h4>
+</div>
+{% include 'network/posts.html' with url='/user/'|add:profile_user.username %}
+{% endblock %}

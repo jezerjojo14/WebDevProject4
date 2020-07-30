@@ -1,0 +1,9 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+<div class="head-content">
+<br><br><br>
+<h3>Following: </h3>
+</div>
+{% include 'network/posts.html' with url='/following' %}
+{% endblock %}
